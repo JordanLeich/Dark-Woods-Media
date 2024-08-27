@@ -1,0 +1,32 @@
+/* src/pages/Movies.css */
+.movies {
+  padding: 2rem;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.movie-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  width: 200px;
+}
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #282c34;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}

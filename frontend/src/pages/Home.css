@@ -1,0 +1,20 @@
+/* src/pages/Home.css */
+.home {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-header {
+  background: #282c34;
+  color: white;
+  padding: 2rem;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #282c34;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}

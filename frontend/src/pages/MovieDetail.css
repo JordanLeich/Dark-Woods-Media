@@ -1,0 +1,20 @@
+/* src/pages/MovieDetail.css */
+.movie-detail {
+  padding: 2rem;
+  text-align: center;
+}
+
+.movie-detail img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
