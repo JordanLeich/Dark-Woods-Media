@@ -1,14 +1,13 @@
-// backend/routes/movies.js
 const express = require('express');
 const router = express.Router();
-const Movie = require('../models/Movie'); // Ensure the correct path to your Movie model
+const Movie = require('../models/Movie'); // assuming your model is named Movie
 
-// Get all movies
 router.get('/', async (req, res) => {
   try {
     const movies = await Movie.find();
     res.json(movies);
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ message: 'Server error' });
   }
 });
