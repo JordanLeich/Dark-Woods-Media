@@ -1,14 +1,17 @@
-require('dotenv').config(); // Ensure this is at the top of the file
-
+// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const moviesRouter = require('./routes/movies'); // Ensure the correct path
+
+dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(express.json());
+app.use('/api/movies', moviesRouter); // Make sure this matches the route you are trying to access
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -16,23 +19,6 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
-// Routes
-app.get('/api/movies', async (req, res) => {
-  try {
-    const movies = await Movie.find();
-    if (!movies.length) {
-      return res.status(404).json({ message: 'No movies found' });
-    }
-    res.json(movies);
-  } catch (error) {
-    console.error('Error fetching movies:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-console.log('Mongo URI:', process.env.MONGO_URI);

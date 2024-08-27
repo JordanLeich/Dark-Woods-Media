@@ -1,51 +1,47 @@
-import React, { useState, useEffect } from 'react';
+// frontend/src/pages/Movies.js
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Movies.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/movies');
         setMovies(response.data);
-      } catch (error) {
-        console.error('Error fetching movies:', error);
+      } catch (err) {
+        setError('Failed to fetch movies');
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchMovies();
   }, []);
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <div className="movies">
-      <header className="movies-header">
-        <h1>Our Movies</h1>
-        <input
-          type="text"
-          placeholder="Search movies..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </header>
-      <section className="movie-list">
-        {movies.length > 0 ? (
-          movies
-            .filter((movie) => movie.title.toLowerCase().includes(search.toLowerCase()))
-            .map((movie) => (
-              <div key={movie._id} className="movie-card">
-                <img src={movie.image} alt={movie.title} />
-                <h2>{movie.title}</h2>
-                <p>Price: ${movie.price}</p>
-                <p>Condition: {movie.condition}</p>
-              </div>
-            ))
-        ) : (
-          <p>No movies available.</p>
-        )}
-      </section>
+    <div className="movies-container">
+      <h1>Movies</h1>
+      {movies.length === 0 ? (
+        <p>No movies available</p>
+      ) : (
+        <div className="movies-list">
+          {movies.map((movie) => (
+            <div key={movie._id} className="movie-card">
+              <h2>{movie.title}</h2>
+              <p>{movie.description}</p>
+              {/* Add more movie details as needed */}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
