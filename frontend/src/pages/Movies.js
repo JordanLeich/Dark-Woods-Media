@@ -7,7 +7,6 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    // Fetch movies from the backend
     axios.get('/api/movies')
       .then(response => setMovies(response.data))
       .catch(error => console.error('Error fetching movies:', error));
@@ -17,15 +16,19 @@ const Movies = () => {
     <div className="movies">
       <h1>Available Movies</h1>
       <div className="movie-list">
-        {movies.map(movie => (
-          <div key={movie._id} className="movie-card">
-            <img src={movie.imageUrl} alt={movie.title} />
-            <h2>{movie.title}</h2>
-            <p>Price: ${movie.price}</p>
-            <p>Condition: {movie.condition}</p>
-            <Link to={`/movies/${movie._id}`} className="btn">View Details</Link>
-          </div>
-        ))}
+        {movies.length > 0 ? (
+          movies.map(movie => (
+            <div key={movie._id} className="movie-card">
+              <img src={movie.imageUrl} alt={movie.title} />
+              <h2>{movie.title}</h2>
+              <p>Price: ${movie.price}</p>
+              <p>Condition: {movie.condition}</p>
+              <Link to={`/movies/${movie._id}`} className="btn">View Details</Link>
+            </div>
+          ))
+        ) : (
+          <p>No movies available</p>
+        )}
       </div>
     </div>
   );

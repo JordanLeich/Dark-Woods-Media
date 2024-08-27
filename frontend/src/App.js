@@ -1,14 +1,18 @@
 import React from 'react';
-import './App.css'; // Optional: include your CSS file
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Movies from './pages/Movies';
+import MovieDetail from './pages/MovieDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Dark Woods Media</h1>
-        <p>This is the home page.</p>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MovieDetail />} />
+      </Routes>
+    </Router>
   );
 }
 
