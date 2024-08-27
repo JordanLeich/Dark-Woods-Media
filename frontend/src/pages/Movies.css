@@ -1,32 +1,31 @@
-/* src/pages/Movies.css */
 .movies {
-  padding: 2rem;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.movies-header {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .movie-card {
   border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 1rem;
-  text-align: center;
-  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  width: calc(33% - 20px);
 }
 
 .movie-card img {
   max-width: 100%;
   height: auto;
-}
-
-.btn {
-  padding: 10px 20px;
-  background-color: #61dafb;
-  color: #282c34;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
 }
