@@ -1,8 +1,7 @@
+require('dotenv').config();  // Ensure this is the only call to dotenv
+
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,3 +26,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+console.log('Mongo URI:', process.env.MONGO_URI);  // For debugging
