@@ -1,0 +1,32 @@
+/* AboutUs.css */
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
